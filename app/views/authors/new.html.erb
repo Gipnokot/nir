@@ -1,0 +1,45 @@
+<div class="container">
+  <h1>Новый автор</h1>
+
+  <%= form_with(model: @author, local: true, class: "mt-4") do |form| %>
+    <% if @author.errors.any? %>
+      <div id="error_explanation" class="alert alert-danger">
+        <h2><%= pluralize(@author.errors.count, "ошибка") %> не позволяет сохранить автора:</h2>
+        <ul>
+          <% @author.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :lastname, "Фамилия" %>
+      <%= form.text_field :lastname, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :name, "Имя" %>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :fathername, "Отчество" %>
+      <%= form.text_field :fathername, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :status, "Статус" %>
+      <%= form.select :status, options_for_select([['Студент', 'студент'], ['Преподаватель', 'преподаватель']]), {}, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :cathedra_id, "Кафедра" %>
+      <%= form.select :cathedra_id, @cathedras.map { |c| [c.name_cathedra, c.cathedra_id] }, {include_blank: true}, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.submit "Добавить автора", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

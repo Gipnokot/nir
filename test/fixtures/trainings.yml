@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id_author: 1
+  name_training: MyString
+  place: MyString
+  training_type: MyString
+  hours: 1
+  start_dt: 2024-05-06
+  end_dt: 2024-05-06
+  number: MyString
+  date_issue: 2024-05-06
+
+two:
+  id_author: 1
+  name_training: MyString
+  place: MyString
+  training_type: MyString
+  hours: 1
+  start_dt: 2024-05-06
+  end_dt: 2024-05-06
+  number: MyString
+  date_issue: 2024-05-06

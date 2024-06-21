@@ -1,0 +1,99 @@
+<!-- app/views/nirs/new.html.erb -->
+<div class="container">
+  <h1 class="mt-4">Новая публикация</h1>
+
+  <%= form_with(model: @nir, local: true, class: "mt-4") do |form| %>
+    <% if @nir.errors.any? %>
+      <div id="error_explanation" class="alert alert-danger">
+        <h2><%= pluralize(@nir.errors.count, "ошибка") %> не позволяет сохранить эту публикацию:</h2>
+        <ul>
+          <% @nir.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :title, "Название" %>
+      <%= form.text_field :title, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :dtr, "Дата публикации" %>
+      <%= form.date_select :dtr, { start_year: Date.today.year - 10, end_year: Date.today.year }, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :nirtype, "Тип НИР" %>
+      <%= form.select :nirtype, options_for_select([['Статья', 'article'], ['Тезисы', 'thesis'], ['Монография', 'monograph'], ['Патент', 'patent'], ['Программа', 'program'], ['База данных', 'database'], ['Книга', 'book']]), {}, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :volume, "Объем" %>
+      <%= form.number_field :volume, step: :any, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :doi, "DOI" %>
+      <%= form.text_field :doi, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :core_rinz, "Core Rinz" %>
+      <%= form.check_box :core_rinz, {}, 1, 0 %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :rinz, "Rinz" %>
+      <%= form.check_box :rinz, {}, 1, 0 %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :scopus, "Scopus" %>
+      <%= form.check_box :scopus, {}, 1, 0 %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :webofscience, "Web of Science" %>
+      <%= form.check_box :webofscience, {}, 1, 0 %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :vak, "ВАК" %>
+      <%= form.check_box :vak, {}, 1, 0 %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :id_adviser, "Руководитель" %>
+      <%= form.select :id_adviser, @advisers.map { |a| ["#{a.lastname} #{a.name} #{a.fathername}", a.author_id] }, { include_blank: true }, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :href, "Ссылка" %>
+      <%= form.text_field :href, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :output, "Результат" %>
+      <%= form.text_area :output, class: "form-control" %>
+    </div>
+
+    <h3>Авторы</h3>
+    <% @students.each_with_index do |student, i| %>
+      <div class="form-group">
+        <%= check_box_tag "author_ids[]", student.author_id, false, id: "author_ids_#{i}", class: "form-check-input" %>
+        <%= label_tag "author_ids_#{i}", "#{student.lastname} #{student.name} #{student.fathername}", class: "form-check-label" %>
+        <%= text_field_tag "percent[]", '', placeholder: 'Процент', class: "form-control" %>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.submit "Создать", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+
+  <p>
+    <%= link_to 'Добавить нового автора', new_author_path, class: "btn btn-secondary" %>
+  </p>
+</div>

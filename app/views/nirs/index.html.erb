@@ -1,0 +1,34 @@
+<div class="table-responsive">
+  <table class="table table-bordered table-sm">
+    <thead class="thead-dark">
+      <tr>
+        <th colspan="3" style="width: 150px; word-wrap: break-word;">ФИО</th>
+        <th scope="col" style="width: 200px; word-wrap: break-word;">Название НИР</th>
+        <th scope="col" style="width: 100px; word-wrap: break-word;">Дата публикации</th>
+        <th scope="col" style="width: 100px; word-wrap: break-word;">DOI</th>
+        <th scope="col" style="width: 200px; word-wrap: break-word;">Ссылка на публикацию</th>
+        <th scope="col" style="width: 300px; word-wrap: break-word;">Публикация</th>
+        <th scope="col" style="width: 150px; word-wrap: break-word;">Действия</th>
+      </tr>
+    </thead>     
+    <tbody>
+      <% @nirs.each do |publication| %>
+        <% publication.nir_authors.each do |nir_author| %>
+          <% author = nir_author.author %>
+          <tr>
+            <td colspan="3" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><%= "#{author.lastname}<br> #{author.name}<br> #{author.fathername}".html_safe %></td>
+            <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><%= publication.title %></td>
+            <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><%= publication.dtr %></td>
+            <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><%= publication.doi %></td>
+            <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;"><%= link_to publication.href, publication.href, class: "wrap-link" %></td>
+            <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 300px;"><%= publication.output %></td>
+            <td>
+              <%= link_to 'Редактировать', edit_nir_path(publication.id), class: 'btn btn-primary btn-sm' %>
+              <%= link_to 'Удалить', nir_path(publication), method: :delete, data: { confirm: 'Вы уверены?' }, class: 'btn btn-danger btn-sm' %>
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

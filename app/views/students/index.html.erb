@@ -1,0 +1,43 @@
+<%= form_with url: students_path, method: :get, local: true do %>
+  <div class="form-group mr-2">
+    <%= select_tag :teacher_id, options_from_collection_for_select(@teachers, :author_id, :full_name), prompt: "Выберите преподавателя" %><br>
+  </div>
+  <div class="actions">
+    <%= submit_tag "Показать публикации", class: "btn btn-primary" %><br>
+  </div>
+<% end %>
+
+<% if @publications.present? %>
+  <h2>Publications for <%= @publications.first.teacher_name %> <%= @publications.first.teacher_lastname %></h2>
+  <table>
+    <thead>
+      <tr>
+        <th colspan="3">ФИО преподавателя</th>
+        <th colspan="3">ФИО студента</th>
+        <th>Название публикации</th>
+        <th>Дата публикации</th>
+        <th>DOI</th>
+        <th>Ссылка</th>
+        <th>Результат</th>
+        <th>Процент участия</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @publications.each do |publication| %>
+        <tr>
+          <td colspan="3"><%= "#{publication.teacher_lastname}<br> #{publication.teacher_name}<br> #{publication.teacher_fathername}".html_safe %></td>
+          <td colspan="3"><%= "#{publication.student_lastname}<br> #{publication.student_name}<br> #{publication.student_fathername}".html_safe %></td>
+          <td><%= publication.title %></td>
+          <td><%= publication.dtr %></td>
+          <td><%= publication.doi %></td>
+          <td><a href="<%= publication.href %>" class="wrap-link"><%= publication.href %></a></td>
+          <td><%= publication.output %></td>
+          <td><%= publication.percent %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= link_to 'Скачать CSV', students_path(format: 'csv', teacher_id: params[:teacher_id]), class: 'btn btn-primary' %>
+<% else %>
+  <p>Не найдено публикаций для выбранного преподавателя.</p>
+<% end %>

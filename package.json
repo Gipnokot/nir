@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "@rails/webpacker": "5.4.4",
+    "bootstrap": "^5.3.3"
+  },
+  "devDependencies": {
+    "webpack": "^5.92.1",
+    "webpack-cli": "^4.9.2",
+    "sass-loader": "^12.4.0",
+    "webpack-dev-server": "^4.7.4"
+  },
+  "scripts": {
+    "build": "webpack"
+  }
+}
