@@ -1,0 +1,30 @@
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th colspan="3">ФИО</th>
+        <th scope="col">Название НИР</th>
+        <th scope="col">Дата публикации</th>
+        <th scope="col">DOI</th>
+        <th scope="col">Ссылка на публикацию</th>
+        <th scope="col">Публикация</th>
+      </tr>
+    </thead>     
+    <tbody>
+      <% @publications.each do |publication| %>
+        <% publication.nir_authors.each do |nir_author| %>
+          <% author = nir_author.author %>
+          <% cathedra = author.cathedra %>
+          <tr>
+            <td colspan="3"><%= "#{author.lastname}<br> #{author.name}<br> #{author.fathername}".html_safe %></td>
+            <td><%= publication.title %></td>
+            <td><%= publication.dtr %></td>
+            <td><%= publication.doi %></td>
+            <td style="word-wrap: break-word; max-width: 200px;"><%= link_to publication.href, publication.href, class: "wrap-link" %></td>
+            <td><%= publication.output %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
