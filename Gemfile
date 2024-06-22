@@ -15,7 +15,6 @@ gem "bootsnap", require: false
 gem 'bootstrap', '~> 5.3.3'
 gem 'jquery-rails'
 gem 'dartsass-sprockets'
-gem 'webpacker', '~> 5.0'
 gem 'kaminari', '~> 1.2'
 
 
