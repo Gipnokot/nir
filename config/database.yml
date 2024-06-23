@@ -21,4 +21,4 @@ production:
   port: 5432
   database: nirdb_f0pk
   username: almazer
-  password: <%= ENV['DATABASE_PASSWORD'] %>
+  password: 6AG91hcd6dxXTFgyfNZv5ftHsIbYEk3a
