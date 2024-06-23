@@ -5,11 +5,11 @@ default: &default
 
 development: &development
   adapter: postgresql
-  host: localhost
+  host: dpg-cps6k1aj1k6c738il200-a.frankfurt-postgres.render.com
   port: 5432
-  database: nirdb
-  username: postgres
-  password: postgres
+  database: nirdb_f0pk
+  username: almazer
+  password: 6AG91hcd6dxXTFgyfNZv5ftHsIbYEk3a
 
 test:
   <<: *default
@@ -17,6 +17,7 @@ test:
 
 production:
   adapter: postgresql
+  url: <%= ENV['DATABASE_URL'] %>
   host: dpg-cps6k1aj1k6c738il200-a.frankfurt-postgres.render.com
   port: 5432
   database: nirdb_f0pk
