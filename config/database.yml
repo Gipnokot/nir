@@ -20,3 +20,4 @@ production:
   database: nir_production
   username: nir
   password: <%= ENV["NIR_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>

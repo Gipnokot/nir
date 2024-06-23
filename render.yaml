@@ -1,8 +1,5 @@
 databases:
-  - name: mysite
-    databaseName: mysite
-    user: mysite
-    plan: free
+  - name: nirdb
 
 services:
   - type: web
@@ -10,14 +7,13 @@ services:
     runtime: ruby
     plan: free
     buildCommand: "./bin/render-build.sh"
-    # preDeployCommand: "bundle exec rails db:migrate" # preDeployCommand only available on paid instance types
     startCommand: "bundle exec rails server"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: mysite
+          name: nirdb
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
       - key: WEB_CONCURRENCY
-        value: 2 # sensible default
+        value: 2
