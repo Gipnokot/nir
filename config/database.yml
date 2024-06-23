@@ -16,4 +16,9 @@ test:
   database: nir_test
 
 production:
-  <<: *development
+  adapter: postgresql
+  host: dpg-cps6k1aj1k6c738il200-a.frankfurt-postgres.render.com
+  port: 5432
+  database: nirdb_f0pk
+  username: almazer
+  password: <%= ENV['DATABASE_PASSWORD'] %>
