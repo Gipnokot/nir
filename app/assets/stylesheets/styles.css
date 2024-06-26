@@ -1,0 +1,81 @@
+        /* CSS для контейнера страницы */
+        .page-container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+          }
+    
+          /* CSS для заголовка */
+          header {
+            background-color: #8FAF6B;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            width: 100%;
+          }
+    
+          /* CSS для контейнера с меню и контентом */
+          .menu-content-container {
+            display: flex;
+            flex: 1;
+            width: 50%;
+          }
+    
+          /* CSS для меню */
+          .col-md-3.bg-light {
+            width: 25%;
+            overflow-y: auto;
+            background-color: #f8f9fa;
+            padding: 10px;
+          }
+    
+          /* CSS для контента */
+          .content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 0 10px;
+          }
+    
+          /* CSS для таблицы */
+          .table {
+            width: 100%;
+            max-width: 100%; /* Задаем максимальную ширину таблицы */
+            margin-bottom: 1rem;
+            background-color: transparent;
+          }
+
+          .table-responsive {
+            overflow-x: auto; /* Добавляем горизонтальную прокрутку при необходимости */
+          }
+    
+          th, td {
+            padding: 0.75rem; /* Регулируем отступы для ячеек */
+            vertical-align: top; /* Выравниваем содержимое ячеек по верхнему краю */
+            border-top: 1px solid #dee2e6; /* Задаем границы для ячеек */
+            white-space: normal;
+          }
+    
+          th {
+            background-color: #f8f9fa; /* Цвет фона заголовка таблицы */
+            color: #495057; /* Цвет текста заголовка таблицы */
+            font-weight: bold;
+            text-align: left;
+          }
+    
+          tr:nth-child(even) {
+            background-color: #f2f2f2; /* Цвет фона четных строк таблицы */
+          }
+
+          .title-cell {
+            word-wrap: break-word; /* Разрешаем перенос слов */
+            white-space: normal; /* Разрешаем перенос слов */
+          }
+    
+          /* CSS для футера */
+          footer {
+            background-color: #343a40;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+          }

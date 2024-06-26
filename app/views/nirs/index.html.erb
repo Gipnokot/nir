@@ -17,7 +17,7 @@
           <% author = nir_author.author %>
           <tr>
             <td colspan="3" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><%= "#{author.lastname}<br> #{author.name}<br> #{author.fathername}".html_safe %></td>
-            <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><%= publication.title %></td>
+            <td class="title-cell" style="width: 200px;"><%= publication.title %></td>
             <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><%= publication.dtr %></td>
             <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><%= publication.doi %></td>
             <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;"><%= link_to publication.href, publication.href, class: "wrap-link" %></td>
